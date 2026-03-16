@@ -14,3 +14,6 @@ outputs/
 # OS files
 .DS_Store
 Thumbs.db
+checkpoints/epoch_*.pt
+checkpoints/latest.pt
+data/
