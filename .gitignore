@@ -1,0 +1,19 @@
+# datasets
+*.tar
+*.tar.gz
+*.zip
+data/
+datasets/
+processed_*
+
+# python
+__pycache__/
+*.pyc
+
+# env
+.venv/
+venv/
+
+# misc
+.python-version
+uv.lock

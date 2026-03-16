@@ -1,0 +1,157 @@
+INFO:     Started server process [68358]
+INFO:     Waiting for application startup.
+
+  Warming up models …
+  ✓ Loaded best.pt  (best_val_acc=0.9142)
+  ✓ GarmentClassifier ready on cuda
+  Loading SDXL Inpainting on cuda …
+Loading pipeline components...:   0%|                                                                            | 0/7 [00:00<?, ?it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  14%|█████████▋                                                          | 1/7 [00:01<00:06,  1.12s/it]Loading pipeline components...:  43%|█████████████████████████████▏                                      | 3/7 [00:01<00:01,  2.97it/s]
+Loading weights:   0%|                                                                                         | 0/517 [00:00<?, ?it/s][A
+Loading weights:  50%|██████████████████████████████████████▏                                      | 256/517 [00:00<00:00, 2557.87it/s][ALoading weights: 100%|█████████████████████████████████████████████████████████████████████████████| 517/517 [00:00<00:00, 2601.94it/s]
+[1mCLIPTextModelWithProjection LOAD REPORT[0m from: /home/jupyter-itproject2026/.cache/huggingface/hub/models--diffusers--stable-diffusion-xl-1.0-inpainting-0.1/snapshots/115134f363124c53c7d878647567d04daf26e41e/text_encoder_2
+Key                                | Status     |  | 
+-----------------------------------+------------+--+-
+text_model.embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Loading pipeline components...:  71%|████████████████████████████████████████████████▌                   | 5/7 [00:01<00:00,  3.77it/s]
+Loading weights:   0%|                                                                                         | 0/196 [00:00<?, ?it/s][ALoading weights: 100%|█████████████████████████████████████████████████████████████████████████████| 196/196 [00:00<00:00, 3605.53it/s]
+[1mCLIPTextModel LOAD REPORT[0m from: /home/jupyter-itproject2026/.cache/huggingface/hub/models--diffusers--stable-diffusion-xl-1.0-inpainting-0.1/snapshots/115134f363124c53c7d878647567d04daf26e41e/text_encoder
+Key                                | Status     |  | 
+-----------------------------------+------------+--+-
+text_model.embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████| 7/7 [00:01<00:00,  5.23it/s]Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████| 7/7 [00:01<00:00,  3.84it/s]
+/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2263: FutureWarning: `enable_vae_slicing` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_slicing()` on a `StableDiffusionXLInpaintPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_slicing()`.
+  deprecate(
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+  ✓ SDXL Inpainting ready
+  ✓ All models ready
+
+  Loading SegFormer garment segmentation …
+INFO:     127.0.0.1:59192 - "POST /api/upcycle HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 761, in hf_raise_for_status
+    response.raise_for_status()
+  File "/opt/tljh/user/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/matei-dorian/segformer-b5-finetuned-human-parsing-v2/resolve/main/processor_config.json'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/transformers/utils/hub.py", line 420, in cached_files
+    hf_hub_download(
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 986, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1137, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1766, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1653, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1576, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 692, in _httpx_follow_relative_redirects_with_backoff
+    hf_raise_for_status(response)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 847, in hf_raise_for_status
+    raise repo_err from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-69b137e5-60c9d9d55cbe46a563611d9c;43e71670-aa10-4e64-a9f5-27b56f9143b7)
+
+Repository Not Found for url: https://huggingface.co/matei-dorian/segformer-b5-finetuned-human-parsing-v2/resolve/main/processor_config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/Second_Stitch/backend/routes/upcycle.py", line 54, in upcycle
+    result   = run_upcycle(image)
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/Second_Stitch/backend/services/generation.py", line 34, in run_upcycle
+    generated = sd.generate(
+                ^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/Second_Stitch/backend/models/sd_pipeline.py", line 204, in generate
+    garment_mask = segment_garment(image_rgb)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/Second_Stitch/backend/models/sd_pipeline.py", line 64, in segment_garment
+    _seg_processor, _seg_model = _get_segformer()
+                                 ^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/Second_Stitch/backend/models/sd_pipeline.py", line 36, in _get_segformer
+    processor = SegformerImageProcessor.from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/transformers/image_processing_base.py", line 179, in from_pretrained
+    image_processor_dict, kwargs = cls.get_image_processor_dict(pretrained_model_name_or_path, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/transformers/image_processing_base.py", line 282, in get_image_processor_dict
+    resolved_processor_file = cached_file(
+                              ^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/transformers/utils/hub.py", line 277, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jupyter-itproject2026/.local/lib/python3.12/site-packages/transformers/utils/hub.py", line 450, in cached_files
+    raise OSError(
+OSError: matei-dorian/segformer-b5-finetuned-human-parsing-v2 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
