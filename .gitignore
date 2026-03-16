@@ -1,19 +1,16 @@
-# datasets
-*.tar
-*.tar.gz
-*.zip
-data/
-datasets/
-processed_*
+# Virtual environment
+venv/
 
-# python
+# Python cache
 __pycache__/
 *.pyc
 
-# env
-.venv/
-venv/
+# Dataset
+dataset/
 
-# misc
-.python-version
-uv.lock
+# Outputs
+outputs/
+
+# OS files
+.DS_Store
+Thumbs.db
