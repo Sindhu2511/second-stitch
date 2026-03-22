@@ -1,5 +1,6 @@
 # Virtual environment
 venv/
+.venv/
 
 # Python cache
 __pycache__/
@@ -7,18 +8,29 @@ __pycache__/
 
 # Dataset
 dataset/
-
-# Outputs
 outputs/
+data/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Model checkpoints
 checkpoints/epoch_*.pt
 checkpoints/latest.pt
-data/
 
-#env files
+# Secrets
 .env
 .env.*
 !.env.example
+
+# Logs and debug
+*.log
+debug_*.png
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# Jupyter
+.ipynb_checkpoints/

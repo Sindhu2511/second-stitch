@@ -1,106 +1,128 @@
-# Second Stitch - Frontend
+# 🧵 Second Stitch
+### AI-Powered Sustainable Wardrobe Upcycling System
 
-A sustainable fashion web application built with React, Vite, and Tailwind CSS. This project enables users to upload clothing images for sustainable redesign analysis.
+> Upload a photo of any garment → AI classifies it → automatically transforms it into an upcycled version → view side-by-side before/after comparison.
+
+## 🌿 What is Second Stitch?
+
+Second Stitch is a full-stack AI application that takes photos of second-hand or existing clothing and automatically upcycles them into new, modern garments — reducing textile waste through intelligent automation.
+
+The system combines:
+- **Deep learning classification** (EfficientNet-B3, 91.45% accuracy) to identify the garment type
+- **Semantic segmentation** (SegFormer-B3) to isolate garment pixels and erase the person/background
+- **Deterministic geometric transformation** to physically shorten hems and remove/shorten sleeves
+- **Generative AI finishing** (SDXL Inpainting) to produce a clean, sewn-looking edge at the cut
+
+## ✨ Features
+
+- 📸 Upload any clothing photo — product shots, worn photos, flat lays
+- 🤖 Automatic garment type detection across 13 categories
+- ✂️ Smart upcycling: long dress → mini dress, trousers → shorts, long sleeve → crop top
+- 🖼️ Interactive before/after slider comparison
+- 💾 Save, favourite, and share your upcycled designs
+- 🔐 User authentication via Supabase
+- ⚡ FastAPI backend with GPU acceleration
+
+## 🗂️ Project Structure
+```
+second-stitch/
+├── backend/
+│   ├── main.py
+│   ├── models/
+│   │   ├── classifier.py
+│   │   └── sd_pipeline.py
+│   ├── services/
+│   │   ├── detection.py
+│   │   ├── generation.py
+│   │   └── prompt_engine.py
+│   ├── routes/
+│   │   └── upcycle.py
+│   └── uploads/
+├── frontend/
+│   └── src/
+│       ├── contexts/
+│       ├── components/
+│       ├── features/
+│       ├── hooks/
+│       ├── lib/
+│       └── utils/
+├── checkpoints/
+├── scripts/
+└── docs/
+```
 
 ## 🚀 Quick Start
 
+### Prerequisites
+- Python 3.12+
+- Node.js 20+
+- CUDA-capable GPU (recommended: 16GB+ VRAM)
+- Supabase account
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Sindhu2511/second-stitch.git
+cd second-stitch
 ```
-bash
+
+### 2. Backend setup
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
 # Install dependencies
+pip install -r requirements.txt
+
+# Create environment file
+cp .env.example .env
+# Fill in your values in .env
+
+# Start the backend
+uvicorn backend.main:app --host 0.0.0.0 --port 8080
+```
+
+### 3. Frontend setup
+```bash
+cd frontend
 npm install
-
-# Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## 📁 Project Structure
+### 4. Open in browser
+```
+http://localhost:5173
+```
 
-```
-frontend/
-├── public/              # Static assets
-├── src/
-│   ├── components/      # Reusable UI components
-│   │   └── ui/         # Base UI components (Button, Card, Input, etc.)
-│   ├── pages/          # Route pages
-│   ├── constants/      # App constants and configuration
-│   ├── hooks/          # Custom React hooks
-│   ├── lib/            # Third-party library configurations
-│   ├── utils/          # Utility functions
-│   ├── App.jsx         # Main application component
-│   ├── main.jsx        # Application entry point
-│   └── index.css       # Global styles
-├── index.html          # HTML entry point
-├── package.json        # Dependencies and scripts
-├── vite.config.js      # Vite configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── eslint.config.js    # ESLint configuration
-```
+## 🧠 Model Performance
+
+| Metric | Value |
+|--------|-------|
+| Test Accuracy | **91.45%** |
+| Training Dataset | DeepFashion2 (503K images) |
+| Model Architecture | EfficientNet-B3 |
+| Training Epochs | 30 |
 
 ## 🛠️ Tech Stack
 
-- **Framework:** React 19
-- **Build Tool:** Vite 7
-- **Routing:** React Router DOM 7
-- **Styling:** Tailwind CSS 3
-- **Animations:** Framer Motion 12
-- **Backend:** Supabase
-- **Image Processing:** HTML2Canvas
+**Backend:** Python 3.12, FastAPI, PyTorch, HuggingFace Transformers, Diffusers, OpenCV, Pillow
 
-## 📝 Available Scripts
+**Frontend:** React 19, Vite 7, Tailwind CSS, Framer Motion, React Router DOM
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run lint` | Run ESLint |
-| `npm run preview` | Preview production build |
+**Database & Auth:** Supabase (PostgreSQL + JWT Auth)
 
-## 🔗 Routes
+## 👩‍💻 Team
 
-| Path | Page | Description |
-|------|------|-------------|
-| `/` | Landing | Home/Welcome page |
-| `/login` | Login | User login page |
-| `/register` | Register | User registration page |
-| `/upload` | Upload | Image upload page |
-| `/processing` | Processing | Processing animation page |
-| `/result` | Result | Results display page |
-| `/dashboard` | Dashboard | User dashboard |
+| Name | Role |
+|------|------|
+| Harshita Soni | ML Pipeline, Backend, Integration |
+| P. Sathvika | Frontend Development |
+| Rishitha Boyapati | Frontend Development |
+| K. Sree Sindhu | Data Processing, Training |
 
-## 📦 Dependencies
-
-### Production
-- `@supabase/supabase-js` - Supabase client
-- `framer-motion` - Animations
-- `html2canvas` - Image processing
-- `react` - UI library
-- `react-dom` - React DOM
-- `react-router-dom` - Routing
-
-### Development
-- `@vitejs/plugin-react` - Vite React plugin
-- `autoprefixer` - CSS processing
-- `eslint` - Linting
-- `postcss` - CSS processing
-- `tailwindcss` - Utility CSS
-- `vite` - Build tool
-
-## 🎨 Features
-
-- User authentication (Login/Register)
-- Image upload functionality
-- Processing animation with progress steps
-- Custom cursor animation
-- Animated backgrounds
-- Theme toggle (light/dark)
-- Responsive design
+**Guided by:** Dr. P. Kayal, Professor & HoD, Department of IT
+**Institution:** BVRIT HYDERABAD College of Engineering for Women
 
 ## 📄 License
 
-Private - All rights reserved
+Developed for academic purposes at BVRIT Hyderabad.
