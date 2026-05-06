@@ -110,19 +110,3 @@ http://localhost:5173
 **Frontend:** React 19, Vite 7, Tailwind CSS, Framer Motion, React Router DOM
 
 **Database & Auth:** Supabase (PostgreSQL + JWT Auth)
-
-## 👩‍💻 Team
-
-| Name | Role |
-|------|------|
-| Harshita Soni | ML Pipeline, Backend, Integration |
-| P. Sathvika | Frontend Development |
-| Rishitha Boyapati | Frontend Development |
-| K. Sree Sindhu | Data Processing, Training |
-
-**Guided by:** Dr. P. Kayal, Professor & HoD, Department of IT
-**Institution:** BVRIT HYDERABAD College of Engineering for Women
-
-## 📄 License
-
-Developed for academic purposes at BVRIT Hyderabad.
